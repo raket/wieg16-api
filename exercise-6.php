@@ -8,12 +8,12 @@ $companyId = (int)$_GET['company_id'];
 $stmt = $pdo->prepare('SELECT * FROM customers WHERE customer_company_id = :id');
 $stmt->execute([':id' => $companyId]);
 
-$response = $stmt->fetch();
+$response = $stmt->fetchAll();
 $status = 200;
 
-if ($response == null) {
+if (count($response) == 0) {
 	$status = 404;
-	$response = ["message" => "Customer not found"];
+	$response = ["message" => "Customers not found"];
 }
 
 header("Content-Type: application/json", true, $status);
