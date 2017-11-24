@@ -6,6 +6,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=milletech_invoice', 'root', 'root', 
 ]);
 
 // Lösning 1: Jag gör inte hela :P
+/*
 $customers = $pdo->query('
 	SELECT customers.*,
 	order_addresses.id AS address_id,
@@ -72,7 +73,7 @@ header("Content-Type: application/json");
 echo json_encode($customers);
 die();
 
-
+*/
 
 // Lösning 4: Vänd på en array och gör den till ett index/uppslagsverk
 $customers = $pdo->query('SELECT * FROM customers')->fetchAll();
